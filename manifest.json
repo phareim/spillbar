@@ -1,0 +1,23 @@
+{
+  "name": "Spillbar - spilltelegrafens hjelpegutt",
+  "version": "9",
+  "manifest_version": 2,
+  "description": "Spilltelegrafen er et lite vannhull for spillnyheter, gif-er av katter, og lange diskusjoner om kultur og quick-save-angst.",
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_title": "Spillbar",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://spilltelegrafen.no/*",
+    "tabs",
+    "notifications",
+    "unlimitedStorage"
+  ]
+  ,"background":{"page":"background.html"}
+  , "content_security_policy": "script-src 'self' https://www.google.com/; object-src 'self'"
+  ,"web_accessible_resources": [
+    "/images/petter.png",
+    "/images/henning.png"
+  ]
+}

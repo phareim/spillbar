@@ -1,0 +1,76 @@
+/* Need to set specific style for .item:hover, #logo, and .tag */
+body{
+	overflow: hidden;
+	min-height: 200px;
+	max-height: 1800px;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+#popup-title {
+	margin-left: 6px;
+	margin-right: 6px;
+	margin-top: 5px;
+	margin-bottom: 2px;
+
+	background-color: #3E311F;
+	padding-top: 10px;
+	padding-bottom: 12px;
+	color: white;
+	text-align: left;
+}
+
+#popup-title a{
+	color: white;
+}
+#popup-title a img{
+	padding-right: 12px;
+	padding-left: 14px;
+}
+#content {
+	width:360px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 2px;
+	padding-bottom: 12px;
+}
+
+#content .popup-entry {
+	background-color: white;
+	text-align: left;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-top: 2px;
+}
+
+#content .popup-title {
+	padding-top: 5px;
+	padding-bottom: 0px;
+	font-weight: bold;
+}
+
+#content .popup-avatar {
+	width: 32px;
+	height: 32px;
+	float: left;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
+#content .popup-content {
+	min-height: 42px;
+}
+
+div.popup-content > div.mouseover { display: none; }
+div.popup-content:hover > div.mouseover { display: block; position: static; /*left: 10px; top:10px;*/}
+div.popup-content:hover > p { display: none;}
+
+.clear{
+	clear: both;
+}
+
+.rounded {
+	border-radius: 3px;
+}
