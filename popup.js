@@ -40,6 +40,7 @@ function createPopUpEntry(entry){
 	var image = document.createElement("img");
 	image.setAttribute('class','popup-avatar');
 	image.setAttribute('src','images/'+entry.author+'.png');
+    image.onerror = function(){this.src='images/64.png'};
 	ent.appendChild(image);
 	var content = document.createElement("div");
 	content.setAttribute('class','popup-content');
