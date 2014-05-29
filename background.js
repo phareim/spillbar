@@ -8,9 +8,14 @@
 google.load("feeds", "1");
 
 var RN = {}; 
-RN.interval = 10000;
+RN.interval = 10000;  //milliseconds between each feed check
 RN.unread = 0;
 var telegraph_feed;
+
+// Window initialization code. Set up the various event handlers
+window.addEventListener("load", function() {
+	chrome.notifications.onClicked.addListener(notificationClicked);
+});
 
 function telegraph_feed(){
 	return telegraph_feed;
@@ -20,21 +25,28 @@ function test(){
 	pop(telegraph_feed.entries[0]);
 }
 
+function notificationClicked(noteID) {
+	console.log("The notification '" + noteID + "' was clicked");
+	window.open(noteID);
+}
+
 function pop(entry){
-	var notification = webkitNotifications.createNotification( 
-		'http://forum.spilltelegrafen.no/themes/Spilltelegrafen/design/images/authors/'+entry.author+'.png', 
-		entry.title, 
-		unescape(entry.contentSnippet) );
-		notification.addEventListener('click', function() {
-	    notification.cancel();
-	    window.open(entry.link);
-		});
-	notification.show();	
-	setTimeout(function(){
-  	notification.cancel();
-	}, 5000);
+	var opt = {
+        type: "basic",
+        title: entry.title,
+        message: unescape(entry.contentSnippet),
+        iconUrl: 'http://forum.spilltelegrafen.no/themes/Spilltelegrafen/design/images/authors/'+entry.author+'.png',
+		isClickable: true
+      }
+	  
+	var callbackfunc = function(noteID) {
+		console.log("Created note " + noteID);
+	}
 
-
+	opt.iconUrl = chrome.runtime.getURL("/images/" + entry.author + ".png");
+	
+	//Using link as note id, will be read when notification is clicked.
+	chrome.notifications.create(entry.link, opt, callbackfunc);
 }
 
 //Load the list of posts we've seen  
